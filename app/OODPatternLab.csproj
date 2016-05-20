@@ -43,18 +43,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Command\Remote\CommandFactory.cs" />
     <Compile Include="Command\Remote\FanKnobAntiClockwiseCommand.cs" />
     <Compile Include="Command\Remote\FanKnobClockwiseCommand.cs" />
+    <Compile Include="Command\Remote\ICommand.cs" />
     <Compile Include="Command\Remote\LightsOffCommand.cs" />
     <Compile Include="Command\Remote\TelevisionCommands.cs" />
     <Compile Include="Command\Remote\TelevisionOffCommand.cs" />
     <Compile Include="Command\Remote\TelevisionSetChannelCommand.cs" />
-    <Compile Include="Command\Remote\UndoableComannd.cs" />
     <Compile Include="Command\State\Fan.cs" />
-    <Compile Include="Command\State\Lights.cs" />
+    <Compile Include="Command\State\Light.cs" />
     <Compile Include="Command\Remote\LightsOnCommand.cs" />
     <Compile Include="Command\RemoteControl.cs" />
     <Compile Include="Command\Remote\CommandBase.cs" />
+    <Compile Include="Command\State\StateStoe.cs" />
     <Compile Include="Command\State\Television.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

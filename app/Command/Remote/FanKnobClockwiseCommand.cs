@@ -1,8 +1,9 @@
-﻿using OODPatternLab.Command.State;
+﻿using System;
+using OODPatternLab.Command.State;
 
 namespace OODPatternLab.Command.Remote
 {
-    public class FanKnobClockwiseCommand : UndoableComannd<Fan, FanKnobAntiClockwiseCommand>
+    public class FanKnobClockwiseCommand : CommandBase<Fan>
     {
         public FanKnobClockwiseCommand(Fan state) : base(state)
         {
@@ -11,6 +12,11 @@ namespace OODPatternLab.Command.Remote
         public override void Execute()
         {
             _state.IncreaseSpeed();
+        }
+
+        public override void Undo()
+        {
+            _state.DecreaseSpeed();
         }
     }
 }

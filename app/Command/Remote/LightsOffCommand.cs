@@ -1,16 +1,22 @@
-﻿using OODPatternLab.Command.State;
+﻿using System;
+using OODPatternLab.Command.State;
 
 namespace OODPatternLab.Command.Remote
 {
-    public class LightsOffCommand : UndoableComannd<Lights, LightsOnCommand>
+    public class LightsOffCommand : CommandBase<Light>
     {
-        public LightsOffCommand(Lights state) : base(state)
+        public LightsOffCommand(Light state) : base(state)
         {
         }
 
         public override void Execute()
         {
             _state.TurnOff();
-        }        
+        }
+
+        public override void Undo()
+        {
+            _state.TurnOn();
+        }
     }
 }

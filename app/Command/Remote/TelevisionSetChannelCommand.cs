@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace OODPatternLab.Command.Remote
 {
-    public class TelevisionSetChannelCommand : UndoableComannd<Television, TelevisionSetChannelCommand>
+    public class TelevisionSetChannelCommand : CommandBase<Television>
     {
         Stack<int> UndoStack = new Stack<int>();
         public int ChannelNumber { get; set; }

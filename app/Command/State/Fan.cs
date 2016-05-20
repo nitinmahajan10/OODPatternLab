@@ -1,33 +1,29 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace OODPatternLab.Command.State
 {
     public class Fan
     {
-        public byte _speed;
+        public byte Speed { get; private set; }
 
         public void IncreaseSpeed()
         {
-            if (_speed == 5)
-                _speed = 0;
+            if (Speed == 5)
+                Speed = 0;
             else
-                ++_speed;
+                ++Speed;
 
-            Console.WriteLine("Fan speed: " + _speed);
+            Console.WriteLine("Fan speed: " + Speed);
         }
 
         public void DecreaseSpeed()
         {
-            if (_speed == 0)
-                _speed = 5;
+            if (Speed == 0)
+                Speed = 5;
             else
-                --_speed;
+                --Speed;
 
-            Console.WriteLine("Fan speed: " + _speed);
+            Console.WriteLine("Fan speed: " + Speed);
         }
     }
 }

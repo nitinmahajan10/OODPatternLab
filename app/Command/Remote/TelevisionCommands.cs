@@ -1,8 +1,9 @@
-﻿using OODPatternLab.Command.State;
+﻿using System;
+using OODPatternLab.Command.State;
 
 namespace OODPatternLab.Command.Remote
 {
-    public class TelevisionOnCommand : UndoableComannd<Television, TelevisionOffCommand>
+    public class TelevisionOnCommand : CommandBase<Television>
     {
         public TelevisionOnCommand(Television state) : base(state)
         {
@@ -11,6 +12,11 @@ namespace OODPatternLab.Command.Remote
         public override void Execute()
         {
             _state.TurnOn();
+        }
+
+        public override void Undo()
+        {
+            _state.TurnOff();
         }
     }
 }

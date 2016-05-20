@@ -4,15 +4,18 @@ namespace OODPatternLab.Command.State
 {
     public class Television
     {
-        public int ChannelNumber { get; set; }
+        public bool State { get; private set; }
+        public int ChannelNumber { get; private set; }
 
         public void TurnOn()
         {
+            State = true;
             Console.WriteLine("It's so entertaining!");
         }
 
         public void TurnOff()
         {
+            State = false;
             Console.WriteLine("It's so dark!");
         }
 

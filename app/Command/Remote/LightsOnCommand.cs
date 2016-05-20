@@ -7,15 +7,20 @@ using System.Threading.Tasks;
 
 namespace OODPatternLab.Command.Remote
 {
-    public class LightsOnCommand : UndoableComannd<Lights, LightsOffCommand>
+    public class LightsOnCommand : CommandBase<Light>
     {
-        public LightsOnCommand(Lights state) : base(state)
+        public LightsOnCommand(Light state) : base(state)
         {
         }
 
         public override void Execute()
         {
             _state.TurnOn();
+        }
+
+        public override void Undo()
+        {
+            _state.TurnOff();
         }
     }
 }
