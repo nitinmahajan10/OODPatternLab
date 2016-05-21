@@ -157,11 +157,11 @@ this.FeatureBackground();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Turn Off Fan")]
+        [NUnit.Framework.DescriptionAttribute("Decrease Fan Speed")]
         [NUnit.Framework.CategoryAttribute("CommandDesignPattern")]
-        public virtual void TurnOffFan()
+        public virtual void DecreaseFanSpeed()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Turn Off Fan", new string[] {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Decrease Fan Speed", new string[] {
                         "CommandDesignPattern"});
 #line 38
 this.ScenarioSetup(scenarioInfo);
@@ -222,10 +222,18 @@ this.FeatureBackground();
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Set Television Channel")]
         [NUnit.Framework.CategoryAttribute("CommandDesignPattern")]
-        public virtual void SetTelevisionChannel()
+        [NUnit.Framework.TestCaseAttribute("201", new string[0])]
+        [NUnit.Framework.TestCaseAttribute("301", new string[0])]
+        [NUnit.Framework.TestCaseAttribute("401", new string[0])]
+        public virtual void SetTelevisionChannel(string channelNumber, string[] exampleTags)
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Set Television Channel", new string[] {
-                        "CommandDesignPattern"});
+            string[] @__tags = new string[] {
+                    "CommandDesignPattern"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Set Television Channel", @__tags);
 #line 57
 this.ScenarioSetup(scenarioInfo);
 #line 6
@@ -233,18 +241,9 @@ this.FeatureBackground();
 #line 58
  testRunner.Given("Remote is Wired", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 59
- testRunner.When("I Set Channel <ChannelNumber> by Pressing Button5", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-            TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
-                        "ChannelNumber"});
-            table2.AddRow(new string[] {
-                        "201"});
-            table2.AddRow(new string[] {
-                        "301"});
-            table2.AddRow(new string[] {
-                        "401"});
+ testRunner.When(string.Format("I Set Channel {0} by Pressing Button5", channelNumber), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 60
- testRunner.Then("the Television Channel should be set to <ChannelNumber>", ((string)(null)), table2, "Then ");
+ testRunner.Then(string.Format("the Television Channel should be set to {0}", channelNumber), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

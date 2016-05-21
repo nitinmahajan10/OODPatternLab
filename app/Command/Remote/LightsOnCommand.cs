@@ -13,7 +13,7 @@ namespace OODPatternLab.Command.Remote
         {
         }
 
-        public override void Execute()
+        public override void Execute(object data)
         {
             _state.TurnOn();
         }

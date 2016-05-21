@@ -13,9 +13,10 @@ namespace OODPatternLab.Command.Remote
             ChannelNumber = channel;
         }
 
-        public override void Execute()
+        public override void Execute(object data)
         {
             UndoStack.Push(_state.ChannelNumber);
+            ChannelNumber = (int)data;
             _state.SetChannel(ChannelNumber);
         }
 

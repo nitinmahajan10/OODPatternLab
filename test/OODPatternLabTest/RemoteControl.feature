@@ -35,7 +35,7 @@ Scenario: Increase Fan Speed
 
 
 @CommandDesignPattern
-Scenario: Turn Off Fan
+Scenario: Decrease Fan Speed
 	Given  Remote is Wired
 	When I Turn the Knob AntiClockwise
 	Then the Speed Of Fan Should Decrease
@@ -54,10 +54,12 @@ Scenario: Turn Television Off
 	Then the Television should be Off
 
 @CommandDesignPattern
-Scenario: Set Television Channel
+Scenario Outline: Set Television Channel
 	Given  Remote is Wired
 	When I Set Channel <ChannelNumber> by Pressing Button5	
 	Then the Television Channel should be set to <ChannelNumber>
+
+	Examples:
 	|ChannelNumber|
 	|201|
 	|301|

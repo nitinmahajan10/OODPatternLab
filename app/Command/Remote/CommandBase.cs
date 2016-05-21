@@ -20,7 +20,7 @@ namespace OODPatternLab.Command.Remote
         
         public bool IsEnabled { get; set; }
 
-        public abstract void Execute();
+        public abstract void Execute(object data);
         public abstract void Undo();
     }
 }

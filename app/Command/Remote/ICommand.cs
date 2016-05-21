@@ -8,7 +8,7 @@ namespace OODPatternLab.Command.Remote
 {
     public interface ICommand
     {
-        void Execute();
+        void Execute(object data);
 
         void Undo();
     }

@@ -27,11 +27,11 @@ namespace OODPatternLab.Command.Remote
             KnobAntiClockwiseCommand = theCommandFactory.CreateCommand(antiClockwiseCommand);
         }
 
-        public void PressButton(int button)
+        public void PressButton(int button, object data)
         {
             if (Buttons.ContainsKey(button))
             {
-                Buttons[button].Execute();
+                Buttons[button].Execute(data);
             }
         }
 
@@ -40,7 +40,7 @@ namespace OODPatternLab.Command.Remote
             if (KnobClockwiseCommand == null)
                 return;
 
-            KnobClockwiseCommand.Execute();
+            KnobClockwiseCommand.Execute(null);
         }
 
         public void TurnKnobAntiClockWise()
@@ -48,7 +48,7 @@ namespace OODPatternLab.Command.Remote
             if (KnobAntiClockwiseCommand == null)
                 return;
 
-            KnobAntiClockwiseCommand.Execute();
+            KnobAntiClockwiseCommand.Execute(null);
         }
     }
 }

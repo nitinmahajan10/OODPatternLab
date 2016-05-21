@@ -1,6 +1,7 @@
 ﻿using NUnit.Framework;
 using OODPatternLab.Command.Remote;
 using OODPatternLab.Command.State;
+using System;
 using TechTalk.SpecFlow;
 
 namespace OODPatternLabTest
@@ -9,6 +10,8 @@ namespace OODPatternLabTest
     public class RemoteControlTestingSteps
     {
         RemoteControl _theRemote = new RemoteControl();
+        int speedBeforeIncreasing = 0;
+        int speedBeforeDecreasing = 0;
 
         [Given(@"I have configured Remote")]
         public void GivenIHaveConfiguredRemote(Table table)
@@ -21,7 +24,7 @@ namespace OODPatternLabTest
         
         [Given(@"Wired Knob Button To Fan Speed")]
         public void GivenWiredKnobButtonToFanSpeed()
-        {
+        {            
             _theRemote.WireKnobButton("IncreaseFan", "DecreaseFan");
         }
         
@@ -34,29 +37,24 @@ namespace OODPatternLabTest
         [When(@"I press Button(.*)")]
         public void WhenIPressButton(int p0)
         {
-            _theRemote.PressButton(p0);
+            _theRemote.PressButton(p0, null);
         }
         
         [When(@"I Turn the Knob Clockwise")]
         public void WhenITurnTheKnobClockwise()
         {
+            speedBeforeIncreasing = StateStoe.TheFan.Speed;
             _theRemote.TurnKnobClockWise();
         }
         
         [When(@"I Turn the Knob AntiClockwise")]
         public void WhenITurnTheKnobAntiClockwise()
         {
+            speedBeforeDecreasing = StateStoe.TheFan.Speed;
             _theRemote.TurnKnobAntiClockWise();
         }
         
-        [When(@"I Set Channel (.*) by Pressing Button(.*)")]
-        public void WhenISetChannelByPressingButton(string p0, int p1)
-        {
-            var channelNum = int.Parse(p0);
-
-            _theRemote.PressButton(p1);
-        }
-        
+             
         [Then(@"the Light should be On")]
         public void ThenTheLightShouldBeOn()
         {
@@ -72,13 +70,21 @@ namespace OODPatternLabTest
         [Then(@"the Speed Of Fan Should Increase")]
         public void ThenTheSpeedOfFanShouldIncrease()
         {
-            ScenarioContext.Current.Pending();
+            ++speedBeforeIncreasing;
+            if (speedBeforeIncreasing > 5)
+                speedBeforeIncreasing = speedBeforeIncreasing - 6;
+
+            Assert.IsTrue(StateStoe.TheFan.Speed == speedBeforeIncreasing, "Actual Speed: " + StateStoe.TheFan.Speed);
         }
         
         [Then(@"the Speed Of Fan Should Decrease")]
         public void ThenTheSpeedOfFanShouldDecrease()
         {
-            ScenarioContext.Current.Pending();
+            --speedBeforeDecreasing;
+            if (speedBeforeDecreasing < 0)
+                speedBeforeDecreasing += 6;
+
+            Assert.IsTrue(StateStoe.TheFan.Speed == speedBeforeDecreasing, "Actual Speed: " + StateStoe.TheFan.Speed);
         }
         
         [Then(@"the Television should be On")]
@@ -92,11 +98,20 @@ namespace OODPatternLabTest
         {
             Assert.IsFalse(StateStoe.TheTelevision.State);
         }
-        
+
+        [When(@"I Set Channel (.*) by Pressing Button(.*)")]
+        public void WhenISetChannelByPressingButton(string p0, int p1)
+        {
+            var channelNum = int.Parse(p0);
+            _theRemote.PressButton(p1, channelNum);
+        }
+
         [Then(@"the Television Channel should be set to (.*)")]
-        public void ThenTheTelevisionChannelShouldBeSetTo(string p0, Table table)
+        public void ThenTheTelevisionChannelShouldBeSetTo(string p0)
         {
             Assert.IsTrue(StateStoe.TheTelevision.ChannelNumber == int.Parse(p0));
         }
+
+
     }
 }
