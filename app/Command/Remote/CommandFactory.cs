@@ -9,37 +9,37 @@ namespace OODPatternLab.Command.Remote
         {
             if (commandName.Equals("TurnOnLight"))
             {
-                return new LightsOnCommand(StateStoe.TheLight);
+                return new LightsOnCommand(StateStore.TheLight);
             }
 
             if (commandName.Equals("TurnOffLight"))
             {
-                return new LightsOffCommand(StateStoe.TheLight);
+                return new LightsOffCommand(StateStore.TheLight);
             }
 
             if (commandName.Equals("TurnOnTelevision"))
             {
-                return new TelevisionOnCommand(StateStoe.TheTelevision);
+                return new TelevisionOnCommand(StateStore.TheTelevision);
             }
 
             if (commandName.Equals("TurnOffTelevision"))
             {
-                return new TelevisionOffCommand(StateStoe.TheTelevision);
+                return new TelevisionOffCommand(StateStore.TheTelevision);
             }
 
             if (commandName.Equals("SetTvChannel"))
             {
-                return new TelevisionSetChannelCommand(StateStoe.TheTelevision, 0);
+                return new TelevisionSetChannelCommand(StateStore.TheTelevision, 0);
             }
 
             if (commandName.Equals("DecreaseFan"))
             {
-                return new FanKnobAntiClockwiseCommand(StateStoe.TheFan);
+                return new FanKnobAntiClockwiseCommand(StateStore.TheFan);
             }
 
             if (commandName.Equals("IncreaseFan"))
             {
-                return new FanKnobClockwiseCommand(StateStoe.TheFan);
+                return new FanKnobClockwiseCommand(StateStore.TheFan);
             }
 
             throw new Exception("Command not found : " + commandName);

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace OODPatternLab.Command.State
 {
-    public static class StateStoe
+    public static class StateStore
     {
         public static Light TheLight = new Light();
         public static Fan TheFan = new Fan();

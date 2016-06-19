@@ -43,14 +43,14 @@ namespace OODPatternLabTest
         [When(@"I Turn the Knob Clockwise")]
         public void WhenITurnTheKnobClockwise()
         {
-            speedBeforeIncreasing = StateStoe.TheFan.Speed;
+            speedBeforeIncreasing = StateStore.TheFan.Speed;
             _theRemote.TurnKnobClockWise();
         }
         
         [When(@"I Turn the Knob AntiClockwise")]
         public void WhenITurnTheKnobAntiClockwise()
         {
-            speedBeforeDecreasing = StateStoe.TheFan.Speed;
+            speedBeforeDecreasing = StateStore.TheFan.Speed;
             _theRemote.TurnKnobAntiClockWise();
         }
         
@@ -58,13 +58,13 @@ namespace OODPatternLabTest
         [Then(@"the Light should be On")]
         public void ThenTheLightShouldBeOn()
         {
-            Assert.IsTrue(StateStoe.TheLight.State);
+            Assert.IsTrue(StateStore.TheLight.State);
         }
         
         [Then(@"the Light should be Off")]
         public void ThenTheLightShouldBeOff()
         {
-            Assert.IsFalse(StateStoe.TheLight.State);
+            Assert.IsFalse(StateStore.TheLight.State);
         }
         
         [Then(@"the Speed Of Fan Should Increase")]
@@ -74,7 +74,7 @@ namespace OODPatternLabTest
             if (speedBeforeIncreasing > 5)
                 speedBeforeIncreasing = speedBeforeIncreasing - 6;
 
-            Assert.IsTrue(StateStoe.TheFan.Speed == speedBeforeIncreasing, "Actual Speed: " + StateStoe.TheFan.Speed);
+            Assert.IsTrue(StateStore.TheFan.Speed == speedBeforeIncreasing, "Actual Speed: " + StateStore.TheFan.Speed);
         }
         
         [Then(@"the Speed Of Fan Should Decrease")]
@@ -84,19 +84,19 @@ namespace OODPatternLabTest
             if (speedBeforeDecreasing < 0)
                 speedBeforeDecreasing += 6;
 
-            Assert.IsTrue(StateStoe.TheFan.Speed == speedBeforeDecreasing, "Actual Speed: " + StateStoe.TheFan.Speed);
+            Assert.IsTrue(StateStore.TheFan.Speed == speedBeforeDecreasing, "Actual Speed: " + StateStore.TheFan.Speed);
         }
         
         [Then(@"the Television should be On")]
         public void ThenTheTelevisionShouldBeOn()
         {
-            Assert.IsTrue(StateStoe.TheTelevision.State);
+            Assert.IsTrue(StateStore.TheTelevision.State);
         }
         
         [Then(@"the Television should be Off")]
         public void ThenTheTelevisionShouldBeOff()
         {
-            Assert.IsFalse(StateStoe.TheTelevision.State);
+            Assert.IsFalse(StateStore.TheTelevision.State);
         }
 
         [When(@"I Set Channel (.*) by Pressing Button(.*)")]
@@ -109,7 +109,7 @@ namespace OODPatternLabTest
         [Then(@"the Television Channel should be set to (.*)")]
         public void ThenTheTelevisionChannelShouldBeSetTo(string p0)
         {
-            Assert.IsTrue(StateStoe.TheTelevision.ChannelNumber == int.Parse(p0));
+            Assert.IsTrue(StateStore.TheTelevision.ChannelNumber == int.Parse(p0));
         }
 
 

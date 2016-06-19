@@ -56,7 +56,7 @@
     <Compile Include="Command\Remote\LightsOnCommand.cs" />
     <Compile Include="Command\RemoteControl.cs" />
     <Compile Include="Command\Remote\CommandBase.cs" />
-    <Compile Include="Command\State\StateStoe.cs" />
+    <Compile Include="Command\State\StateStore.cs" />
     <Compile Include="Command\State\Television.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
