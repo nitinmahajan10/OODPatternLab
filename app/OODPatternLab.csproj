@@ -34,6 +34,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -58,6 +59,18 @@
     <Compile Include="Command\Remote\CommandBase.cs" />
     <Compile Include="Command\State\StateStore.cs" />
     <Compile Include="Command\State\Television.cs" />
+    <Compile Include="OCP\TextParser\AlphaNumericTextParser.cs" />
+    <Compile Include="OCP\TextParser\TextParserBase.cs" />
+    <Compile Include="OCP\TextParser\WordTextParser.cs" />
+    <Compile Include="OCP\TextProvider\ConsoleTextProvider.cs" />
+    <Compile Include="OCP\TextProvider\ITextProvider.cs" />
+    <Compile Include="OCP\TextProvider\StreamTextProvider.cs" />
+    <Compile Include="OCP\WordCounter.cs" />
+    <Compile Include="OCP\WordCountPrint\ConsoleWordCountPrinter.cs" />
+    <Compile Include="OCP\WordCountPrint\IWordCountPrinter.cs" />
+    <Compile Include="OCP\WordCountPrint\StringWordCountPrinter.cs" />
+    <Compile Include="OCP\WordStore\InMemoryWordCountStore.cs" />
+    <Compile Include="OCP\WordStore\WordCountStore.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
